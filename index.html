@@ -3,274 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>آزمون سه‌سطحی پودمان ۱ شبکه</title>
+  <title>آزمون سه‌سطحی پودمان ۱ شبکه (نظری)</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f172a;
-      --card-bg: #1e293b;
-      --card-sub: #334155;
-      --accent: #38bdf8;
-      --accent-hover: #0284c7;
-      --success: #22c55e;
-      --danger: #ef4444;
-      --warning: #f59e0b;
-      --text: #f8fafc;
-      --text-muted: #94a3b8;
-      --border: #475569;
+      --bg: #0f172a; --card-bg: #1e293b; --card-sub: #334155;
+      --accent: #38bdf8; --success: #22c55e; --danger: #ef4444;
+      --text: #f8fafc; --text-muted: #94a3b8; --border: #475569;
     }
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      -webkit-tap-highlight-color: transparent;
-    }
-    body {
-      background-color: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      padding-bottom: 70px;
-    }
-    header {
-      background: linear-gradient(135deg, #1e293b, #0f172a);
-      border-bottom: 1px solid var(--border);
-      padding: 16px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-    .brand h1 {
-      font-size: 1.15rem;
-      font-weight: 800;
-      color: var(--accent);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .brand p {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-    .nav-tabs {
-      display: flex;
-      background: var(--card-sub);
-      border-radius: 12px;
-      padding: 4px;
-      gap: 4px;
-    }
-    .tab-btn {
-      background: none;
-      border: none;
-      color: var(--text-muted);
-      padding: 8px 16px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .tab-btn.active {
-      background: var(--accent);
-      color: #0f172a;
-      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.4);
-    }
-    main {
-      flex: 1;
-      max-width: 800px;
-      width: 100%;
-      margin: 0 auto;
-      padding: 16px;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Vazirmatn', sans-serif; -webkit-tap-highlight-color: transparent; }
+    body { background: var(--bg); color: var(--text); min-height: 100vh; display: flex; flex-direction: column; padding-bottom: 70px; }
+    header { background: linear-gradient(135deg, #1e293b, #0f172a); border-bottom: 1px solid var(--border); padding: 16px 20px; position: sticky; top: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 20px rgba(0,0,0,0.3); }
+    .brand h1 { font-size: 1.1rem; font-weight: 800; color: var(--accent); }
+    .brand p { font-size: 0.72rem; color: var(--text-muted); margin-top: 2px; }
+    .nav-tabs { display: flex; background: var(--card-sub); border-radius: 12px; padding: 4px; gap: 4px; }
+    .tab-btn { background: none; border: none; color: var(--text-muted); padding: 8px 14px; font-size: 0.85rem; font-weight: 700; border-radius: 8px; cursor: pointer; }
+    .tab-btn.active { background: var(--accent); color: #0f172a; box-shadow: 0 2px 8px rgba(56,189,248,0.4); }
+    main { flex: 1; max-width: 800px; width: 100%; margin: 0 auto; padding: 16px; }
     .hidden { display: none !important; }
-
-    .study-card {
-      background: var(--card-bg);
-      border-radius: 16px;
-      padding: 18px;
-      margin-bottom: 16px;
-      border: 1px solid var(--border);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
-    .study-title {
-      font-size: 1.05rem;
-      font-weight: 800;
-      color: var(--accent);
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-    .point-item {
-      background: rgba(255,255,255,0.03);
-      border-radius: 10px;
-      padding: 12px;
-      margin-bottom: 10px;
-      border-right: 4px solid var(--accent);
-      font-size: 0.92rem;
-      line-height: 1.7;
-    }
+    .study-card { background: var(--card-bg); border-radius: 16px; padding: 18px; margin-bottom: 16px; border: 1px solid var(--border); box-shadow: 0 4px 12px rgba(0,0,0,0.2); }
+    .study-title { font-size: 1.02rem; font-weight: 800; color: var(--accent); margin-bottom: 12px; }
+    .point-item { background: rgba(255,255,255,0.03); border-radius: 10px; padding: 12px; margin-bottom: 10px; border-right: 4px solid var(--accent); font-size: 0.9rem; line-height: 1.75; }
     .point-item strong { color: #38bdf8; }
-
-    .quiz-progress-bar {
-      width: 100%;
-      height: 8px;
-      background: var(--card-sub);
-      border-radius: 4px;
-      margin-bottom: 16px;
-      overflow: hidden;
-    }
-    .quiz-progress-fill {
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--accent), #60a5fa);
-      transition: width 0.3s ease;
-    }
-    .quiz-status {
-      display: flex;
-      justify-content: space-between;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      margin-bottom: 12px;
-      font-weight: 600;
-    }
-    .quiz-card {
-      background: var(--card-bg);
-      border-radius: 18px;
-      padding: 22px;
-      border: 1px solid var(--border);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
-    }
-    .question-text {
-      font-size: 1.05rem;
-      font-weight: 700;
-      line-height: 1.7;
-      margin-bottom: 18px;
-    }
-    .options-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .opt-btn {
-      background: var(--card-sub);
-      color: var(--text);
-      border: 2px solid transparent;
-      padding: 14px 16px;
-      border-radius: 12px;
-      text-align: right;
-      font-size: 0.95rem;
-      font-weight: 600;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transition: all 0.2s ease;
-    }
+    .quiz-progress-bar { width: 100%; height: 8px; background: var(--card-sub); border-radius: 4px; margin-bottom: 16px; overflow: hidden; }
+    .quiz-progress-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--accent), #60a5fa); transition: width 0.3s; }
+    .quiz-status { display: flex; justify-content: space-between; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 12px; font-weight: 600; }
+    .quiz-card { background: var(--card-bg); border-radius: 18px; padding: 22px; border: 1px solid var(--border); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+    .question-text { font-size: 1rem; font-weight: 700; line-height: 1.75; margin-bottom: 18px; }
+    .options-grid { display: flex; flex-direction: column; gap: 10px; }
+    .opt-btn { background: var(--card-sub); color: var(--text); border: 2px solid transparent; padding: 14px 16px; border-radius: 12px; text-align: right; font-size: 0.92rem; font-weight: 600; cursor: pointer; display: flex; align-items: flex-start; gap: 12px; transition: all 0.2s; line-height: 1.6; }
     .opt-btn:active { transform: scale(0.98); }
-    .opt-num {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      background: rgba(255,255,255,0.1);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.82rem;
-      flex-shrink: 0;
-    }
-    .opt-btn.correct {
-      background: rgba(34, 197, 94, 0.2);
-      border-color: var(--success);
-      color: #86efac;
-    }
-    .opt-btn.correct .opt-num {
-      background: var(--success);
-      color: #0f172a;
-    }
-    .opt-btn.wrong {
-      background: rgba(239, 68, 68, 0.2);
-      border-color: var(--danger);
-      color: #fca5a5;
-    }
-    .opt-btn.wrong .opt-num {
-      background: var(--danger);
-      color: white;
-    }
-    .explanation-box {
-      margin-top: 18px;
-      padding: 14px;
-      border-radius: 12px;
-      background: rgba(56, 189, 248, 0.1);
-      border-right: 4px solid var(--accent);
-      font-size: 0.88rem;
-      line-height: 1.7;
-    }
-    .action-btn {
-      margin-top: 18px;
-      width: 100%;
-      background: var(--accent);
-      color: #0f172a;
-      border: none;
-      padding: 14px;
-      font-size: 1rem;
-      font-weight: 800;
-      border-radius: 12px;
-      cursor: pointer;
-      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
-    }
-    .result-card {
-      text-align: center;
-      background: var(--card-bg);
-      padding: 30px 20px;
-      border-radius: 20px;
-      border: 1px solid var(--border);
-    }
-    .score-circle {
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: conic-gradient(var(--accent) calc(var(--pct) * 1%), var(--card-sub) 0);
-      margin: 20px auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-    .score-inner {
-      width: 100px;
-      height: 100px;
-      background: var(--card-bg);
-      border-radius: 50%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      font-weight: 900;
-      color: var(--accent);
-    }
-    .score-inner span {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      font-weight: 500;
-    }
+    .opt-num { width: 26px; height: 26px; border-radius: 8px; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; flex-shrink: 0; margin-top: 2px; }
+    .opt-btn.correct { background: rgba(34,197,94,0.2); border-color: var(--success); color: #86efac; }
+    .opt-btn.correct .opt-num { background: var(--success); color: #0f172a; }
+    .opt-btn.wrong { background: rgba(239,68,68,0.2); border-color: var(--danger); color: #fca5a5; }
+    .opt-btn.wrong .opt-num { background: var(--danger); color: white; }
+    .explanation-box { margin-top: 18px; padding: 14px; border-radius: 12px; background: rgba(56,189,248,0.1); border-right: 4px solid var(--accent); font-size: 0.87rem; line-height: 1.8; }
+    .action-btn { margin-top: 18px; width: 100%; background: var(--accent); color: #0f172a; border: none; padding: 14px; font-size: 0.98rem; font-weight: 800; border-radius: 12px; cursor: pointer; box-shadow: 0 4px 14px rgba(56,189,248,0.3); }
+    .result-card { text-align: center; background: var(--card-bg); padding: 30px 20px; border-radius: 20px; border: 1px solid var(--border); }
+    .score-circle { width: 120px; height: 120px; border-radius: 50%; background: conic-gradient(var(--accent) calc(var(--pct) * 1%), var(--card-sub) 0); margin: 20px auto; display: flex; align-items: center; justify-content: center; }
+    .score-inner { width: 100px; height: 100px; background: var(--card-bg); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; font-size: 1.5rem; font-weight: 900; color: var(--accent); }
+    .score-inner span { font-size: 0.72rem; color: var(--text-muted); font-weight: 500; }
   </style>
 </head>
 <body>
 
   <header>
     <div class="brand">
-      <h1>🚀 پودمان ۱: شبکه</h1>
+      <h1>🚀 پودمان ۱: شبکه (نظری)</h1>
       <p>مرور سه‌سطحی + آزمون سطح‌بندی‌شده</p>
     </div>
     <div class="nav-tabs">
@@ -283,42 +65,43 @@
     <!-- TAB 1: STUDY -->
     <div id="study-tab">
       <div class="study-card">
-        <div class="study-title">🔴 سطح ۱: مفاهیم جامع و معماری شبکه</div>
-        <div class="point-item"><strong>تعریف شبکه و منابع:</strong> اتصال دو یا چند رایانه برای تبادل داده و اشتراک منابع سخت‌افزاری (چاپگر، هارد) و نرم‌افزاری (فایل، بانک اطلاعاتی).</div>
-        <div class="point-item"><strong>دسته‌بندی مقیاس جغرافیایی:</strong> شامل PAN (شخصی/بلوتوث)، LAN (محلی/ساختمان)، CAN (دانشگاهی/پادگان)، MAN (شهری) و WAN (کشوری/اینترنت).</div>
-        <div class="point-item"><strong>معماری شبکه (Architecture):</strong> مدل Client-Server (مدیریت متمرکز توسط سرور) و مدل Peer-to-Peer (نظیر به نظیر، بدون مدیریت مرکزی).</div>
-        <div class="point-item"><strong>توپولوژی‌های فیزیکی:</strong> Bus (خطی/خاتمه‌دهنده)، Star (ستاره‌ای/سوئیچ مرکزی)، Ring (حلقوی)، Mesh (مش/اتصال کامل) و Hybrid (ترکیبی).</div>
-        <div class="point-item"><strong>مدل‌های مرجع ارتباطی:</strong> مدل OSI (۷ لایه استاندارد) و مدل TCP/IP (۴ لایه کاربردی اینترنت).</div>
-        <div class="point-item"><strong>استانداردهای IEEE 802:</strong> شامل 802.3 (Ethernet برای کابل)، 802.11 (WLAN برای وای‌فای) و 802.15 (WPAN برای بلوتوث).</div>
-        <div class="point-item"><strong>مفاهیم پایداری:</strong> تحمل خطا (Fault Tolerance) یعنی تداوم کار شبکه در صورت خرابی یک بخش، و مقیاس‌پذیری (Scalability) یعنی امکان توسعه شبکه.</div>
+        <div class="study-title">🔴 سطح ۱: اصلی (تعاریف و مفاهیم پایه)</div>
+        <div class="point-item"><strong>تعریف شبکه:</strong> اتصال دو یا چند رایانه برای تبادل اطلاعات و استفاده مشترک از منابع سخت‌افزاری (چاپگر، هارد، پردازنده) و نرم‌افزاری (پوشه، فایل، نرم‌افزار).</div>
+        <div class="point-item"><strong>Node و IP:</strong> هر وسیله متصل به شبکه که نشانی یکتا دارد Node نام دارد. آدرس IP مجموعه‌ای از چند عدد است که باید یکتا باشد.</div>
+        <div class="point-item"><strong>مزایای شبکه:</strong> صرفه‌جویی در هزینه، صرفه‌جویی در زمان، مدیریت و پشتیبانی متمرکز، فعالیت گروهی.</div>
+        <div class="point-item"><strong>اجزای شبکه:</strong> سرویس‌گیرنده (Client / Workstation)، سرویس‌دهنده (Server)، محیط انتقال (Media)، سیستم‌عامل شبکه، پروتکل.</div>
+        <div class="point-item"><strong>مدل سرویس‌دهی:</strong> Server-Based (مدیریت متمرکز، Domain) و Peer-to-Peer (هر رایانه هم‌زمان سرویس‌دهنده و گیرنده).</div>
+        <div class="point-item"><strong>LAN و WAN:</strong> LAN محدوده کوچک (اتاق، ساختمان)؛ WAN محدوده بزرگ (شهر، کشور، اینترنت).</div>
       </div>
 
       <div class="study-card">
-        <div class="study-title">🟡 سطح ۲: جزئیات فنی، لایه‌ها و رسانه‌ها</div>
-        <div class="point-item"><strong>لایه‌های مهم OSI:</strong> لایه ۲ (پیوند داده/آدرس MAC)، لایه ۳ (شبکه/آدرس IP و مسیریابی) و لایه ۴ (انتقال/مدیریت جریان داده).</div>
-        <div class="point-item"><strong>رسانه‌های هدایت‌پذیر:</strong> کابل زوج به هم تابیده (TP) شامل UTP و STP (در رده‌های Cat5, Cat6) و کابل کواکسیال.</div>
-        <div class="point-item"><strong>فیبر نوری:</strong> انتقال داده با نور؛ شامل Single-mode (لیزر/فواصل طولانی) و Multi-mode (LED/فواصل کوتاه).</div>
-        <div class="point-item"><strong>رسانه‌های بی‌سیم:</strong> امواج رادیویی (فرکانس پایین/نفوذ بالا)، مایکروویو (فرکانس بالا/دید مستقیم) و مادون قرمز.</div>
-        <div class="point-item"><strong>پروتکل‌های انتقال:</strong> TCP (مطمئن و اتصال‌گرا با دست‌تکانی ۳ مرحله‌ای) و UDP (سریع و غیراتصال‌گرا).</div>
-        <div class="point-item"><strong>پروتکل‌های کاربردی:</strong> HTTP/HTTPS (وب)، FTP (فایل)، DNS (نام به IP)، DHCP (تخصیص IP خودکار) و SSH (مدیریت امن).</div>
+        <div class="study-title">🟡 سطح ۲: جزئی (توضیحات و مقایسه‌ها)</div>
+        <div class="point-item"><strong>سه نوع سیگنال:</strong> الکتریکی (کابل مسی)، نوری (فیبر نوری و مادون قرمز)، رادیویی (شبکه‌های بی‌سیم).</div>
+        <div class="point-item"><strong>آنالوگ vs دیجیتال:</strong> آنالوگ پیوسته است (صدای انسان)؛ دیجیتال فقط صفر و یک دارد.</div>
+        <div class="point-item"><strong>فرکانس، باند، پهنای باند:</strong> فرکانس = تعداد تکرار سیگنال در ثانیه (هرتز)؛ باند فرکانسی = محدوده مشخص فرکانس؛ پهنای باند در رایانه = حداکثر bps.</div>
+        <div class="point-item"><strong>عوامل نویز:</strong> هم‌شنوایی (اثر کابل مجاور)، حرارتی (حرکت تصادفی الکترون)، القایی (موتورهای الکتریکی).</div>
+        <div class="point-item"><strong>کواکسیال (۴ بخش):</strong> مغزی مسی، عایق داخلی، شیلد توری، عایق بیرونی.</div>
+        <div class="point-item"><strong>فیبر نوری (۵ بخش):</strong> هسته، روکش (Cladding)، غلاف، الیاف تقویتی، روکش بیرونی. کاربرد: پالس نوری و شکست نور.</div>
+        <div class="point-item"><strong>امواج رادیویی vs مایکروویو:</strong> رادیویی فرکانس پایین، عبور از موانع؛ مایکروویو فرکانس بالای 100MHz، دید مستقیم.</div>
+        <div class="point-item"><strong>بلوتوث:</strong> حذف کابل لوازم جانبی، تا ۱۰۰ متر، باند ۲.۴ تا ۲.۴۸ GHz. <strong>NFC:</strong> فاصله حدود ۴ سانتی‌متر، پرداخت غیرنقدی و کارت مترو/اتوبوس.</div>
       </div>
 
       <div class="study-card">
-        <div class="study-title">🟢 سطح ۳: محاسبات، دستورات و عیب‌یابی</div>
-        <div class="point-item"><strong>ساختار آدرس IP:</strong> آدرس IPv4 دارای ۳۲ بیت (۴ بخش ۸ بیتی یا اکتت) است. کلاس A (1-126)، کلاس B (128-191) و کلاس C (192-223).</div>
-        <div class="point-item"><strong>آدرس‌های خاص:</strong> Loopback (127.0.0.1 برای تست داخلی) و APIPA (169.254.x.x در صورت نبود سرور DHCP).</div>
-        <div class="point-item"><strong>پورت‌های شبکه:</strong> محدوده ۰ تا ۶۵۵۳۵؛ پورت‌های رزرو شده (Well-known) بین ۰ تا ۱۰۲۳ قرار دارند.</div>
-        <div class="point-item"><strong>دستورات کنسول:</strong> <code>ipconfig</code> (مشاهده تنظیمات)، <code>ping</code> (تست اتصال)، <code>tracert</code> (ردیابی مسیر) و <code>nslookup</code> (بررسی DNS).</div>
-        <div class="point-item"><strong>الگوریتم‌های دسترسی:</strong> CSMA/CD برای تشخیص تصادف در شبکه‌های کابلی و CSMA/CA برای جلوگیری از تصادف در شبکه‌های بی‌سیم.</div>
-        <div class="point-item"><strong>محاسبات Mesh:</strong> در توپولوژی Full Mesh، تعداد لینک‌های مورد نیاز از فرمول n(n-1)/2 محاسبه می‌شود.</div>
+        <div class="study-title">🟢 سطح ۳: ریز (پروتکل‌ها، همبندی و استاندارد)</div>
+        <div class="point-item"><strong>پروتکل‌های مهم:</strong> FTP (انتقال پرونده)، ICMP (گزارش خطا)، TCP (اتصال‌گرا و مطمئن)، UDP (سریع و غیراتصال‌گرا).</div>
+        <div class="point-item"><strong>دست‌تکانی TCP:</strong> SYN ← SYN/ACK ← ACK.</div>
+        <div class="point-item"><strong>درگاه (Port):</strong> عددی بین ۰ تا ۶۵۵۳۵؛ ۰ تا ۱۰۲۳ رزرو شده. پورت‌ها: FTP=20/21، SSH=22، Telnet=23، HTTP=80، RDP=3389.</div>
+        <div class="point-item"><strong>همبندی‌ها:</strong> خطی (Bus): ارزان، قطعی یک کابل = قطعی کل. حلقوی (Ring): با MAU. ستاره‌ای (Star): با سوئیچ، قطعی یک کابل فقط همان رایانه. مش (Mesh): پایدارترین و گران‌ترین. ترکیبی (Hybrid): اینترنت.</div>
+        <div class="point-item"><strong>تحمل خطا:</strong> تداوم سرویس‌دهی با جایگزینی خودکار تجهیزات پشتیبان هنگام خرابی.</div>
+        <div class="point-item"><strong>استانداردهای IEEE:</strong> 802.3 = اترنت کابلی؛ 802.11 = Wi-Fi (WLAN)؛ 802.16 = WiMAX؛ 802.20 = MBWA.</div>
       </div>
     </div>
 
     <!-- TAB 2: QUIZ -->
     <div id="quiz-tab" class="hidden">
       <div id="level-selector" class="quiz-card">
-        <h2 style="color: var(--accent); margin-bottom: 8px;">آزمون سه‌سطحی</h2>
-        <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin-bottom: 14px;">
+        <h2 style="color: var(--accent); margin-bottom: 8px; font-size: 1.1rem;">آزمون سه‌سطحی (نظری)</h2>
+        <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.8; margin-bottom: 14px;">
           سطح ۱ باز است. با کسب حداقل <strong>۶۰٪</strong> در هر سطح، سطح بعدی باز می‌شود.
         </p>
         <div id="level-buttons" class="options-grid"></div>
@@ -332,7 +115,6 @@
         <div class="quiz-progress-bar">
           <div id="quiz-progress-fill" class="quiz-progress-fill"></div>
         </div>
-
         <div class="quiz-card">
           <div id="question-text" class="question-text"></div>
           <div id="options-grid" class="options-grid"></div>
@@ -357,7 +139,7 @@
   </main>
 
   <script>
-    const STORAGE_KEY = 'networkQuizProgressV1';
+    const STORAGE_KEY = 'networkQuizProgressV2';
     const PASS_PERCENT = 60;
     const levelNames = { 1: 'اصلی', 2: 'جزئی', 3: 'ریز' };
 
@@ -368,478 +150,550 @@
     };
 
     const questions = [
-      // ================= سطح ۱: اصلی (۱۵ سوال جامع) =================
+      // ================= سطح ۱: اصلی (تعاریف و مفاهیم) - ۱۵ سوال =================
       {
         level: 1,
-        q: "تعریف دقیق شبکه رایانه‌ای و هدف اصلی آن چیست؟",
+        q: "شبکه رایانه‌ای را تعریف کنید.",
         options: [
-          "اتصال دو یا چند رایانه برای تبادل داده و اشتراک منابع سخت‌افزاری و نرم‌افزاری",
-          "استفاده از اینترنت برای بازی‌های آنلاین و تماشای ویدئو",
-          "مجموعه‌ای از کابل‌ها و سوئیچ‌ها بدون نیاز به نرم‌افزار",
-          "فقط اتصال رایانه‌ها به یک چاپگر مرکزی در یک اتاق"
+          "اتصال دو یا چند رایانه برای تبادل اطلاعات و استفاده مشترک از منابع سخت‌افزاری و نرم‌افزاری",
+          "فقط اتصال رایانه‌ها به اینترنت برای وب‌گردی",
+          "مجموعه‌ای از کابل‌ها بدون نیاز به رایانه",
+          "نرم‌افزاری برای چاپ پرونده‌ها روی کاغذ"
         ],
         answer: 0,
-        exp: "شبکه برای اشتراک منابع (مثل چاپگر یا فایل) و تبادل اطلاعات ایجاد می‌شود."
+        exp: "شبکه رایانه‌ای از اتصال دو یا چند رایانه برای تبادل اطلاعات و استفاده مشترک از منابع سخت‌افزاری و نرم‌افزاری ایجاد می‌شود."
       },
       {
         level: 1,
-        q: "کدام گزینه بیانگر منابع سخت‌افزاری و نرم‌افزاری در شبکه است؟",
+        q: "منابع سخت‌افزاری و نرم‌افزاری قابل اشتراک در شبکه شامل چه مواردی است؟",
         options: [
-          "سخت‌افزاری: چاپگر و اسکنر؛ نرم‌افزاری: فایل‌ها و بانک‌های اطلاعاتی",
-          "سخت‌افزاری: ویندوز و آفیس؛ نرم‌افزاری: کیس و مانیتور",
-          "سخت‌افزاری: پروتکل TCP؛ نرم‌افزاری: کابل مسی",
-          "هر دو دسته فقط شامل قطعات داخل کیس رایانه می‌شوند"
+          "سخت‌افزاری: چاپگر، دیسک سخت، حافظه، پردازنده — نرم‌افزاری: پوشه‌ها، پرونده‌ها، نرم‌افزارها",
+          "سخت‌افزاری: پوشه‌ها و پرونده‌ها — نرم‌افزاری: چاپگر و حافظه",
+          "هر دو فقط شامل کابل و سوئیچ",
+          "سخت‌افزاری: نرم‌افزارها — نرم‌افزاری: چاپگر"
         ],
         answer: 0,
-        exp: "منابع سخت‌افزاری قطعات فیزیکی و منابع نرم‌افزاری داده‌ها و برنامه‌ها هستند."
+        exp: "منابع سخت‌افزاری شامل چاپگر، دیسک سخت، حافظه و پردازنده است. منابع نرم‌افزاری شامل پوشه‌ها، پرونده‌ها و نرم‌افزارها هستند."
       },
       {
         level: 1,
-        q: "شبکه‌ای که برای ارتباط دستگاه‌های شخصی یک فرد (مثل موبایل و هدفون) استفاده می‌شود چه نام دارد؟",
+        q: "مزایای اصلی استفاده از شبکه‌های رایانه‌ای کدام‌اند؟",
         options: [
-          "PAN (Personal Area Network)",
-          "LAN (Local Area Network)",
-          "WAN (Wide Area Network)",
-          "MAN (Metropolitan Area Network)"
+          "صرفه‌جویی در هزینه، صرفه‌جویی در زمان، مدیریت و پشتیبانی متمرکز، فعالیت گروهی",
+          "فقط صرفه‌جویی در هزینه",
+          "فقط فعالیت گروهی",
+          "افزایش هزینه و زمان"
         ],
         answer: 0,
-        exp: "شبکه شخصی (PAN) معمولاً از تکنولوژی بلوتوث استفاده می‌کند."
+        exp: "کتاب چهار مزیت اصلی ذکر می‌کند: صرفه‌جویی در هزینه، صرفه‌جویی در زمان، مدیریت و پشتیبانی متمرکز و فعالیت گروهی."
       },
       {
         level: 1,
-        q: "تفاوت اصلی شبکه‌های LAN و WAN در چیست؟",
+        q: "در شبکه، Node (گره) و آدرس IP چه هستند؟",
         options: [
-          "LAN محدوده کوچک (ساختمان) و WAN محدوده بزرگ (کشور/قاره) را پوشش می‌دهد",
-          "LAN همیشه بی‌سیم و WAN همیشه کابلی است",
-          "WAN سرعت بسیار بیشتری نسبت به LAN دارد",
-          "LAN فقط برای اتصال دو رایانه به هم است"
+          "Node هر وسیله متصل به شبکه با نشانی یکتاست و IP مجموعه‌ای از چند عدد یکتاست",
+          "Node فقط رایانه است و IP فقط برای چاپگر",
+          "Node نام شبکه و IP نام کاربر است",
+          "هر دو مفاهیم یکسانی دارند"
         ],
         answer: 0,
-        exp: "محدوده جغرافیایی ملاک اصلی تفکیک LAN از WAN است."
+        exp: "هر وسیله‌ای مانند رایانه و چاپگر که به شبکه متصل می‌شود نشانی منحصر به فرد دارد و به آن Node می‌گویند. آدرس IP مجموعه‌ای از چند عدد است که باید یکتا باشد."
       },
       {
         level: 1,
-        q: "شبکه‌ای که پادگان‌های نظامی یا ساختمان‌های یک دانشگاه را به هم متصل می‌کند چه نام دارد؟",
+        q: "شبکه مبتنی بر سرویس‌دهنده (Server-Based) چه ویژگی دارد؟",
         options: [
-          "CAN (Campus Area Network)",
-          "PAN (Personal Area Network)",
-          "MAN (Metropolitan Area Network)",
-          "LAN (Local Area Network)"
+          "یک یا چند رایانه فقط نقش سرویس‌دهنده دارند و سرویس‌های خاصی ارائه می‌کنند و به آن Domain نیز می‌گویند",
+          "همه رایانه‌ها نقش یکسان دارند",
+          "فقط برای شبکه‌های خانگی مناسب است",
+          "نیازی به سیستم‌عامل شبکه ندارد"
         ],
         answer: 0,
-        exp: "شبکه دانشگاهی (CAN) مجموعه‌ای از چند LAN متصل به هم در یک محدوده خاص است."
+        exp: "در این شبکه پایگاه داده روی رایانه‌های پرقدرتی به نام سرویس‌دهنده قرار دارد و کاربران از راه دور به آن دسترسی دارند. به این شبکه Domain نیز گفته می‌شود."
       },
       {
         level: 1,
-        q: "در معماری Client-Server، وظیفه سرور (Server) چیست؟",
+        q: "شبکه نظیر به نظیر (Peer-to-Peer) چه ویژگی دارد؟",
         options: [
-          "ارائه سرویس و مدیریت متمرکز منابع شبکه",
-          "فقط استفاده از منابعی که کاربران دیگر به اشتراک گذاشته‌اند",
-          "جلوگیری از اتصال کاربران به اینترنت",
-          "خاموش کردن خودکار رایانه‌های شبکه در پایان روز"
+          "همه رایانه‌ها می‌توانند هم‌زمان سرویس‌دهنده و سرویس‌گیرنده باشند",
+          "فقط یک رایانه سرویس‌دهنده است",
+          "فقط برای شرکت‌های بزرگ مناسب است",
+          "به سرور مرکزی نیاز دارد"
         ],
         answer: 0,
-        exp: "سرور مدیریت مرکزی و سرویس‌دهی را بر عهده دارد."
+        exp: "در شبکه نظیر به نظیر هر رایانه صرف‌نظر از نوع سیستم‌عامل می‌تواند پرونده‌های خود را به اشتراک بگذارد و به پرونده‌های دیگر رایانه‌ها دسترسی داشته باشد."
       },
       {
         level: 1,
-        q: "ویژگی اصلی شبکه نظیر به نظیر (Peer-to-Peer) چیست؟",
+        q: "سرویس‌گیرنده (Client) و سرویس‌دهنده (Server) را تعریف کنید.",
         options: [
-          "هر رایانه می‌تواند هم‌زمان هم سرویس‌دهنده و هم سرویس‌گیرنده باشد",
-          "نیاز به یک سرور بسیار قدرتمند و گران‌قیمت دارد",
-          "امنیت آن از مدل سرویس‌دهنده بسیار بالاتر است",
-          "فقط در شبکه‌های بسیار بزرگ جهانی کاربرد دارد"
+          "Client درخواست استفاده از منابع را دارد و Workstation نیز نامیده می‌شود — Server خدمات ارائه می‌دهد و به درخواست‌ها پاسخ می‌دهد",
+          "Client خدمات می‌دهد و Server درخواست می‌کند",
+          "هر دو یک نقش دارند",
+          "Client فقط چاپگر است و Server فقط رایانه"
         ],
         answer: 0,
-        exp: "در P2P مدیریت مرکزی وجود ندارد و هر گره نقش دوگانه دارد."
+        exp: "سرویس‌گیرنده رایانه‌ای است که درخواست استفاده از منابع را دارد و به آن ایستگاه کاری (Workstation) می‌گویند. سرویس‌دهنده رایانه‌ای است که خدمات ارائه می‌دهد و به درخواست‌های سرویس‌گیرنده پاسخ می‌دهد."
       },
       {
         level: 1,
-        q: "در کدام توپولوژی، تمام رایانه‌ها به یک دستگاه مرکزی (سوئیچ یا هاب) متصل می‌شوند؟",
+        q: "محیط انتقال (Communication Media) چیست؟",
         options: [
-          "ستاره‌ای (Star)",
-          "خطی (Bus)",
-          "حلقوی (Ring)",
-          "مش (Mesh)"
+          "ارتباط بین رایانه‌ها به وسیله یک رسانه انجام می‌شود که می‌تواند سیمی (Wired) یا بی‌سیم (Wireless) باشد",
+          "فقط کابل مسی است",
+          "فقط امواج رادیویی است",
+          "نرم‌افزاری برای مدیریت شبکه است"
         ],
         answer: 0,
-        exp: "توپولوژی ستاره‌ای رایج‌ترین نوع در شبکه‌های امروزی است."
+        exp: "محیط انتقال رسانه‌ای است که ارتباط بین رایانه‌ها را برقرار می‌کند و می‌تواند سیمی مانند کابل مسی و فیبر نوری یا بی‌سیم مانند امواج رادیویی باشد."
       },
       {
         level: 1,
-        q: "مزیت اصلی توپولوژی مش (Mesh) نسبت به سایر توپولوژی‌ها چیست؟",
+        q: "پروتکل (Protocol) را تعریف کنید.",
         options: [
-          "پایداری و تحمل خطای بسیار بالا به دلیل وجود مسیرهای متعدد",
-          "هزینه بسیار کم کابل‌کشی و تجهیزات",
-          "نصب و راه‌اندازی بسیار آسان و سریع",
-          "نیاز نداشتن به هیچ‌گونه پروتکل ارتباطی"
+          "مجموعه قوانین و قراردادهایی که تعیین می‌کند چگونه رایانه‌های درون شبکه با هم ارتباط برقرار کنند",
+          "نوعی کابل انتقال داده",
+          "نام تجاری یک سوئیچ",
+          "نرم‌افزار ویروس‌کش"
         ],
         answer: 0,
-        exp: "در مش، قطع شدن یک لینک باعث قطع کل ارتباط نمی‌شود."
+        exp: "پروتکل زبان مشترک برای برقراری ارتباط بین رایانه‌هاست و شیوه تقسیم‌بندی، ارسال، جمع‌بندی مجدد بسته‌ها و کنترل زمان تبادل اطلاعات از وظایف آن است."
       },
       {
         level: 1,
-        q: "فرمول محاسبه تعداد لینک‌های مورد نیاز در یک شبکه Full Mesh با n گره چیست؟",
+        q: "تفاوت شبکه محلی (LAN) و شبکه گسترده (WAN) چیست؟",
         options: [
-          "n(n-1) / 2",
-          "n + 1",
-          "2n - 1",
-          "n * n"
+          "LAN محدوده جغرافیایی کوچک مانند اتاق و ساختمان را پوشش می‌دهد و WAN محدوده بزرگ مانند شهر، استان و کشور را",
+          "LAN همیشه بی‌سیم است و WAN همیشه کابلی",
+          "WAN فقط داخل یک اتاق است",
+          "هیچ تفاوتی ندارند"
         ],
         answer: 0,
-        exp: "برای مثال در شبکه ۵ گره‌ای، ۱۰ لینک (۵*۴/۲) نیاز است."
+        exp: "شبکه محلی (LAN) شامل رایانه‌هایی است که با فاصله کم در محلی مانند یک اتاق، طبقه یا چند ساختمان نزدیک قرار دارند. شبکه گسترده (WAN) حوزه جغرافیایی گسترده نظیر شهر، استان و کشور را پوشش می‌دهد."
       },
       {
         level: 1,
-        q: "در توپولوژی خطی (Bus)، وظیفه ترمیناتور (Terminator) چیست؟",
+        q: "سیستم‌عامل شبکه چه وظیفه‌ای دارد؟",
         options: [
-          "جلوگیری از برگشت سیگنال و جذب امواج در انتهای کابل",
-          "تقویت سیگنال برای رسیدن به فواصل دورتر",
-          "تخصیص آدرس IP به رایانه‌های متصل به خط",
-          "اتصال کابل اصلی به سوئیچ مرکزی"
+          "علاوه بر کارهای معمول سیستم‌عامل، سرویس‌ها و خدمات مورد نیاز مدیران شبکه را ارائه می‌کند",
+          "فقط کارهای معمول یک سیستم‌عامل را انجام می‌دهد",
+          "فقط برای چاپ استفاده می‌شود",
+          "فقط ویروس‌کشی می‌کند"
         ],
         answer: 0,
-        exp: "بدون ترمیناتور، سیگنال برگشتی باعث ایجاد نویز و اختلال می‌شود."
+        exp: "سیستم‌عامل شبکه سیستم‌عاملی است که علاوه بر کارهای معمول، می‌تواند سرویس‌ها و خدمات مورد نیاز مدیران شبکه مانند سرویس چاپ یا اشتراک پرونده را ارائه کند."
       },
       {
         level: 1,
-        q: "استاندارد IEEE 802.3 مربوط به کدام نوع شبکه است؟",
+        q: "تحمل خطا (Fault Tolerance) در سیستم‌عامل شبکه به چه معناست؟",
         options: [
-          "اترنت کابلی (Ethernet)",
-          "شبکه بی‌سیم (Wi-Fi)",
-          "بلوتوث (Bluetooth)",
-          "فیبر نوری (Fiber)"
+          "هنگام بروز خطا سیستم از تجهیزات جایگزین استفاده کرده و بدون تأخیر یا با تأخیر بسیار کم به سرویس‌دهی ادامه می‌دهد",
+          "افزایش سرعت کابل‌ها با نرم‌افزار",
+          "جلوگیری از تغییر پسورد کاربران",
+          "رمزنگاری کدهای وب"
         ],
         answer: 0,
-        exp: "خانواده 802.3 استانداردهای شبکه‌های محلی کابلی را تعیین می‌کند."
+        exp: "تحمل خطا باعث می‌شود هنگام بروز خطا، سیستم‌عامل از تجهیزات جایگزین استفاده کرده و عملیات جایگزینی بدون استفاده از عوامل انسانی و به‌صورت خودکار انجام شود."
       },
       {
         level: 1,
-        q: "مدل مرجع OSI دارای چند لایه است؟",
+        q: "استاندارد در تجهیزات شبکه چیست و چه مزیتی دارد؟",
         options: [
-          "۷ لایه",
-          "۴ لایه",
-          "۵ لایه",
-          "۹ لایه"
+          "توافق‌های مورد قبول همه شرکت‌ها که باعث سازگاری تجهیزات سازندگان مختلف می‌شود",
+          "قیمت تجهیزات را افزایش می‌دهد",
+          "فقط یک شرکت خاص تجهیزات می‌سازد",
+          "نیازی به پروتکل نیست"
         ],
         answer: 0,
-        exp: "لایه ۱ (فیزیکی) تا لایه ۷ (کاربرد) وظایف شبکه را تقسیم‌بندی می‌کنند."
+        exp: "استاندارد توافق‌های مشخص بین سازندگان تجهیزات شبکه است تا سازگاری آنها حفظ شود. استفاده از استاندارد باعث می‌شود تجهیزات ساخته‌شده توسط سازندگان مختلف در یک شبکه قابل استفاده باشند."
       },
       {
         level: 1,
-        q: "کدام لایه در مدل TCP/IP معادل لایه‌های ۷، ۶ و ۵ در مدل OSI است؟",
+        q: "سیگنال آنالوگ و دیجیتال چه تفاوتی دارند؟",
         options: [
-          "لایه کاربرد (Application)",
-          "لایه انتقال (Transport)",
-          "لایه اینترنت (Internet)",
-          "لایه دسترسی شبکه (Network Access)"
+          "آنالوگ پیوسته است مانند صدای انسان ولی دیجیتال فقط دو حالت صفر و یک دارد",
+          "دیجیتال پیوسته است و آنالوگ گسسته",
+          "هر دو فقط صفر و یک هستند",
+          "آنالوگ فقط در فیبر نوری استفاده می‌شود"
         ],
         answer: 0,
-        exp: "مدل TCP/IP لایه‌های بالایی را در یک لایه کاربرد ادغام کرده است."
+        exp: "سیگنال آنالوگ در کابل و هوا منتشر می‌شود و نمونه‌ای از آن صدای انسان است. سیگنال دیجیتال در دستگاه‌های هوشمند فقط دو حالت صفر و یک دارد."
       },
       {
         level: 1,
-        q: "مفهوم تحمل خطا (Fault Tolerance) در شبکه به چه معناست؟",
+        q: "همبندی (Topology) شبکه را تعریف کنید و انواع آن را نام ببرید.",
         options: [
-          "تداوم کار شبکه حتی در صورت خرابی برخی از اجزا",
-          "توانایی شبکه در شناسایی و حذف خودکار فایل‌های مخرب",
-          "امکان افزایش تعداد کاربران بدون کاهش سرعت",
-          "استفاده از کابل‌های بسیار ضخیم برای جلوگیری از قطع شدن"
+          "طرح و نقشه اتصال اجزای شبکه — انواع: خطی، حلقوی، ستاره‌ای، مش، ترکیبی",
+          "فقط نوع کابل‌کشی — انواع: مسی و نوری",
+          "نام نرم‌افزار شبکه",
+          "سرعت انتقال داده"
         ],
         answer: 0,
-        exp: "تحمل خطا یعنی شبکه نقطه شکست واحد (Single Point of Failure) نداشته باشد."
+        exp: "به طرح و نقشه اتصال اجزای شبکه همبندی یا توپولوژی می‌گویند. انواع آن عبارت‌اند از خطی (Bus)، حلقوی (Ring)، ستاره‌ای (Star)، مش (Mesh) و ترکیبی (Hybrid)."
       },
 
-      // ================= سطح ۲: جزئی (۱۲ سوال فنی) =================
+      // ================= سطح ۲: جزئی (توضیحات و مقایسه) - ۱۵ سوال =================
       {
         level: 2,
-        q: "آدرس فیزیکی (MAC) در کدام لایه OSI و توسط چه دستگاهی بررسی می‌شود؟",
+        q: "سه نوع متداول سیگنال برای ارتباط در شبکه را نام ببرید.",
         options: [
-          "لایه ۲ (Data Link) - سوئیچ",
-          "لایه ۳ (Network) - روتر",
-          "لایه ۱ (Physical) - هاب",
-          "لایه ۴ (Transport) - فایروال"
+          "الکتریکی (کابل مسی)، نوری (فیبر نوری و مادون قرمز)، رادیویی (شبکه‌های بی‌سیم)",
+          "فقط الکتریکی و نوری",
+          "فقط رادیویی",
+          "آنالوگ و دیجیتال"
         ],
         answer: 0,
-        exp: "سوئیچ بر اساس جدول MAC آدرس، فریم‌ها را هدایت می‌کند."
+        exp: "شبکه‌های با کابل مسی از سیگنال الکتریکی، فیبر نوری از پالس نوری و شبکه‌های بی‌سیم از سیگنال رادیویی استفاده می‌کنند."
       },
       {
         level: 2,
-        q: "وظیفه اصلی لایه ۳ (Network) در مدل OSI چیست؟",
+        q: "عوامل ایجاد نویز در شبکه کدام‌اند؟",
         options: [
-          "آدرس‌دهی منطقی (IP) و مسیریابی (Routing)",
-          "تبدیل داده به سیگنال‌های الکتریکی",
-          "تضمین تحویل نهایی بسته‌ها به کاربر",
-          "نمایش داده‌ها به صورت فرمت‌های گرافیکی"
+          "هم‌شنوایی (Crosstalk)، حرارتی، القایی",
+          "فقط حرارتی",
+          "فقط القایی",
+          "نویز وجود ندارد"
         ],
         answer: 0,
-        exp: "روترها در این لایه با استفاده از آدرس IP مسیر یابی می‌کنند."
+        exp: "هم‌شنوایی اثر میدان مغناطیسی یک کابل در کابل مجاور است. حرارت باعث حرکت تصادفی الکترون‌ها می‌شود. نویز القایی از موتورهای مکانیکی و لوازم الکتریکی تولید می‌شود."
       },
       {
         level: 2,
-        q: "کدام پروتکل لایه انتقال برای پخش زنده ویدئو و سرعت بالا مناسب‌تر است؟",
+        q: "پهنای باند در علم مخابرات و علم رایانه چه تفاوتی دارد؟",
         options: [
-          "UDP (User Datagram Protocol)",
-          "TCP (Transmission Control Protocol)",
-          "HTTP (Hypertext Transfer Protocol)",
-          "FTP (File Transfer Protocol)"
+          "در مخابرات فاصله بین پایین‌ترین و بالاترین فرکانس رسانه است — در رایانه حداکثر تعداد بیت‌های قابل انتقال در واحد زمان با واحد bps",
+          "هر دو یک تعریف دارند",
+          "در مخابرات واحد bps دارد",
+          "در رایانه واحد هرتز دارد"
         ],
         answer: 0,
-        exp: "UDP بدون اتصال‌گرا و سریع است و برای پخش زنده (Live) عالی است."
+        exp: "در مخابرات پهنای باند فاصله بین پایین‌ترین و بالاترین فرکانسی است که رسانه استفاده می‌کند. در رایانه نرخ ارسال اطلاعات و حداکثر بیت‌های قابل انتقال است که با bps سنجیده می‌شود."
       },
       {
         level: 2,
-        q: "کابل STP چه تفاوتی با کابل UTP دارد؟",
+        q: "کابل کواکسیال از چند بخش تشکیل شده است؟ نام ببرید.",
         options: [
-          "STP دارای شیلد فلزی برای جلوگیری از نویز مغناطیسی است",
-          "UTP سرعت بسیار بیشتری نسبت به STP دارد",
-          "STP فقط برای فواصل بالای ۵۰۰ متر استفاده می‌شود",
-          "کابل UTP از جنس فیبر نوری است"
+          "۴ بخش: مغزی مسی، عایق داخلی، محافظ توری سیمی (شیلد)، عایق بیرونی",
+          "۲ بخش: مغزی و روکش",
+          "۳ بخش: مغزی، شیلد، سوئیچ",
+          "۵ بخش: هسته، روکش، غلاف، الیاف، روکش بیرونی"
         ],
         answer: 0,
-        exp: "Shielded Twisted Pair (STP) در محیط‌های صنعتی پر نویز استفاده می‌شود."
+        exp: "کواکسیال از چهار بخش تشکیل شده: مغزی مسی که سیگنال الکتریکی را هدایت می‌کند، عایق داخلی بین مغزی و شیلد، محافظ توری سیمی که سیگنال را در مقابل نویز حفاظت می‌کند و عایق بیرونی."
       },
       {
         level: 2,
-        q: "تفاوت اصلی فیبر نوری Single-mode و Multi-mode در چیست؟",
+        q: "فیبر نوری از چند بخش تشکیل شده است؟ نام ببرید.",
         options: [
-          "تعداد پرتوهای نوری و مسافت قابل پشتیبانی (Single برای فواصل طولانی)",
-          "Multi-mode فقط از لیزر استفاده می‌کند",
-          "Single-mode ارزان‌تر و نصب آن آسان‌تر است",
-          "فیبر Multi-mode فقط در زیر دریا استفاده می‌شود"
+          "۵ بخش: هسته، روکش (Cladding)، غلاف، الیاف تقویتی، روکش بیرونی",
+          "۴ بخش: مغزی، عایق، شیلد، روکش",
+          "۳ بخش: هسته، غلاف، روکش",
+          "۲ بخش: هسته و روکش"
         ],
         answer: 0,
-        exp: "سینگل‌مود قطر هسته کمتری دارد و برای مسافت‌های طولانی با لیزر کار می‌کند."
+        exp: "فیبر نوری پنج بخش دارد: هسته که نور در آن جریان می‌یابد، روکش با ضریب شکست متفاوت، غلاف محافظ، الیاف تقویتی برای قدرت کشش و روکش بیرونی پلاستیکی."
       },
       {
         level: 2,
-        q: "باند فرکانسی ISM (۲.۴ گیگاهرتز) برای کدام تکنولوژی‌ها استفاده می‌شود؟",
+        q: "مزایای فیبر نوری نسبت به کابل مسی چیست؟",
         options: [
-          "Wi-Fi و Bluetooth",
-          "فرستنده‌های رادیو FM",
-          "ارتباطات ماهواره‌ای نظامی",
-          "کابل‌های فیبر نوری منازل"
+          "سرعت انتقال بالا، امنیت زیاد، مقاومت در برابر نویز، مناسب مسافت‌های طولانی",
+          "ارزان‌تر بودن و نصب ساده‌تر",
+          "عبور از موانع بدون تجهیزات",
+          "عدم نیاز به مبدل سیگنال"
         ],
         answer: 0,
-        exp: "باند ISM یک محدوده فرکانسی آزاد برای مصارف صنعتی، علمی و پزشکی است."
+        exp: "فیبر نوری با پدیده شکست نور داده‌ها را به‌صورت پالس نوری انتقال می‌دهد. سرعت بالا، امنیت زیاد و مقاومت در برابر نویز از مزایای آن است."
       },
       {
         level: 2,
-        q: "کدام پروتکل وظیفه تبدیل نام دامنه (مثل Google.com) به آدرس IP را دارد؟",
+        q: "ویژگی امواج رادیویی در انتقال اطلاعات چیست؟",
         options: [
-          "DNS (Domain Name System)",
-          "DHCP (Dynamic Host Configuration Protocol)",
-          "HTTP (Hypertext Transfer Protocol)",
-          "SNMP (Simple Network Management Protocol)"
+          "فرکانس پایین‌تر، عبور از موانع، افت توان با افزایش مسافت",
+          "فرکانس بالا و نیاز به دید مستقیم",
+          "عبور نکردن از موانع",
+          "فقط در فضای بسته کار می‌کنند"
         ],
         answer: 0,
-        exp: "بدون DNS ما باید آدرس‌های عددی تمام سایت‌ها را حفظ می‌کردیم."
+        exp: "امواج رادیویی به راحتی تولید می‌شوند و می‌توانند از ساختمان‌ها و موانع عبور کنند. امواج فرکانس پایین به راحتی از موانع عبور می‌کنند ولی توان آنها در اثر افزایش مسافت افت می‌کند."
       },
       {
         level: 2,
-        q: "فرآیند Three-way Handshake مربوط به کدام پروتکل است؟",
+        q: "ویژگی امواج مایکروویو در انتقال اطلاعات چیست؟",
         options: [
-          "TCP",
-          "UDP",
-          "IP",
-          "ICMP"
+          "فرکانس بالای ۱۰۰MHz، نیاز به دید مستقیم، عبور نکردن از موانع",
+          "فرکانس پایین و عبور از موانع",
+          "فقط در شبکه‌های خانگی",
+          "نیازی به آنتن ندارد"
         ],
         answer: 0,
-        exp: "مراحل SYN، SYN/ACK و ACK برای برقراری اتصال مطمئن در TCP انجام می‌شود."
+        exp: "امواج مایکروویو فرکانس بالای ۱۰۰MHz دارند و به صورت مستقیم حرکت می‌کنند. برخلاف امواج رادیویی فرکانس پایین، نمی‌توانند به خوبی از موانع عبور کنند و باید بین فرستنده و گیرنده مانعی نباشد."
       },
       {
         level: 2,
-        q: "پورت‌های استاندارد HTTP و HTTPS به ترتیب کدامند؟",
+        q: "فناوری بلوتوث چه هدفی دارد و چه مشخصاتی دارد؟",
         options: [
-          "۸۰ و ۴۴۳",
-          "۲۰ و ۲۱",
-          "۵۳ و ۶۷",
-          "۲۲ و ۲۳"
+          "حذف کابل ارتباطی بین رایانه و تجهیزات جانبی، حداکثر ۱۰۰ متر، فرکانس ۲.۴ تا ۲.۴۸ گیگاهرتز",
+          "فقط برای اینترنت، برد ۱۰ کیلومتر",
+          "فقط برای پرداخت بانکی",
+          "برد ۴ سانتی‌متر"
         ],
         answer: 0,
-        exp: "HTTPS نسخه امن HTTP است که از رمزنگاری SSL/TLS استفاده می‌کند."
+        exp: "هدف اصلی بلوتوث حذف کابل ارتباطی بین رایانه و تجهیزات جانبی مانند هدست، صفحه‌کلید و ماوس است. حداکثر ۱۰۰ متر برد دارد و در باند فرکانسی ۲.۴ تا ۲.۴۸ گیگاهرتز کار می‌کند."
       },
       {
         level: 2,
-        q: "تفاوت اصلی SSH و Telnet در چیست؟",
+        q: "فناوری NFC چه کاربردی دارد و چه مشخصاتی دارد؟",
         options: [
-          "SSH داده‌ها را رمزنگاری می‌کند ولی Telnet به صورت متن ساده ارسال می‌کند",
-          "Telnet امنیت بسیار بالاتری نسبت به SSH دارد",
-          "SSH فقط در شبکه‌های محلی کار می‌کند",
-          "Telnet برای انتقال فایل‌های حجیم استفاده می‌شود"
+          "پرداخت‌های مالی غیرنقدی مانند کارت بانکی و مترو، فاصله حدود ۴ سانتی‌متر، فرکانس ۱۳.۵۶ گیگاهرتز",
+          "اتصال به اینترنت پرسرعت",
+          "ارسال ایمیل‌های حجیم",
+          "تماشای تلویزیون ماهواره‌ای"
         ],
         answer: 0,
-        exp: "همیشه باید از SSH (پورت ۲۲) به جای Telnet (پورت ۲۳) استفاده کرد."
+        exp: "از NFC در پرداخت‌های مالی غیرنقدی مانند کارت‌های بانکی، اتوبوس و مترو و همچنین در دستگاه‌هایی که از اینترنت اشیا پشتیبانی می‌کنند استفاده می‌شود. فاصله ارتباط حدود ۴ سانتی‌متر است."
       },
       {
         level: 2,
-        q: "کدام مورد از ویژگی‌های سیستم‌عامل شبکه (NOS) است؟",
+        q: "در همبندی ستاره‌ای (Star) اگر کابل یک رایانه قطع شود چه اتفاقی می‌افتد؟",
         options: [
-          "پشتیبانی از چند پردازنده، امنیت بالا و مدیریت متمرکز کاربران",
-          "رایگان بودن و عدم نیاز به سخت‌افزار قوی",
-          "فقط توانایی اجرای نرم‌افزارهای گرافیکی سنگین",
-          "جایگزینی کامل برای کابل‌ها و تجهیزات فیزیکی"
+          "فقط همان رایانه از شبکه خارج می‌شود و بقیه رایانه‌ها سالم می‌مانند",
+          "کل شبکه قطع می‌شود",
+          "سوئیچ می‌سوزد",
+          "همه رایانه‌ها قطع می‌شوند"
         ],
         answer: 0,
-        exp: "سیستم‌عامل‌های سرور مثل Windows Server برای پایداری طراحی شده‌اند."
+        exp: "در توپولوژی ستاره‌ای هر رایانه کابل مجزا به سوئیچ دارد؛ قطعی یک کابل فقط همان رایانه را از شبکه خارج می‌کند و بقیه رایانه‌ها سالم می‌مانند."
       },
       {
         level: 2,
-        q: "در مدل OSI، لایه 'نمایش' (Presentation) چه وظیفه‌ای دارد؟",
+        q: "عیب اصلی همبندی خطی (Bus) چیست؟",
         options: [
-          "قالب‌بندی داده، فشرده‌سازی و رمزنگاری",
-          "مسیریابی بین شبکه‌های مختلف",
-          "کنترل جریان داده و مدیریت جلسات ارتباطی",
-          "تبدیل بیت‌ها به سیگنال‌های فیزیکی"
+          "قطع شدن یک بخش از کابل، کل شبکه را قطع می‌کند",
+          "خرابی سوئیچ کل شبکه را قطع می‌کند",
+          "نیاز به MAU دارد",
+          "هزینه بسیار بالایی دارد"
         ],
         answer: 0,
-        exp: "لایه ۶ مسئول این است که داده‌ها در سمت گیرنده قابل فهم باشند."
+        exp: "در همبندی خطی تمام رایانه‌ها به یک کابل اصلی متصل هستند؛ بنابراین قطع شدن کابل در هر نقطه، کل شبکه را از کار می‌اندازد."
+      },
+      {
+        level: 2,
+        q: "در همبندی مش (Mesh) مزیت اصلی چیست؟",
+        options: [
+          "وجود بیش از یک مسیر بین گره‌ها، بنابراین اگر بخشی از شبکه از کار بیفتد ارتباط حفظ می‌شود",
+          "ارزان‌ترین نوع همبندی است",
+          "کمترین مصرف کابل را دارد",
+          "به سوئیچ نیاز دارد"
+        ],
+        answer: 0,
+        exp: "در همبندی مش به دلیل وجود بیش از یک مسیر بین گره‌ها، اگر بخشی از اجزای شبکه از کار بیفتد باز هم می‌توان ارتباط را حفظ کرد. این همبندی مطمئن‌ترین و پایدارترین نوع ارتباط است ولی هزینه برپایی آن بالاست."
+      },
+      {
+        level: 2,
+        q: "همبندی ترکیبی (Hybrid) چیست؟",
+        options: [
+          "همبندی شبکه‌ای که با بیش از یک نوع همبندی ایجاد شده و مزایا و معایب همبندی‌های به کار گرفته شده را دارد",
+          "همبندی که فقط از کابل مسی استفاده می‌کند",
+          "همبندی که فقط برای شبکه‌های کوچک مناسب است",
+          "همبندی که در آن تمام رایانه‌ها به یک کابل متصل هستند"
+        ],
+        answer: 0,
+        exp: "همبندی ترکیبی با بیش از یک نوع همبندی ایجاد شده و مزایا و معایب همبندی‌های به کار گرفته شده را دارد. اینترنت بهترین مثال از بزرگ‌ترین همبندی ترکیبی است."
+      },
+      {
+        level: 2,
+        q: "سیستم‌عامل شبکه باید چه قابلیت‌هایی داشته باشد؟",
+        options: [
+          "امنیت، پشتیبانی از چندین پردازنده، تحمل خطا، امکان تهیه نسخه پشتیبان، ابزارهای مدیریتی ساده و یکپارچه، قابلیت اطمینان و پایداری",
+          "فقط امنیت",
+          "فقط تحمل خطا",
+          "فقط نصب آنتی‌ویروس"
+        ],
+        answer: 0,
+        exp: "سیستم‌عامل شبکه باید قابلیت‌هایی مثل امنیت، پشتیبانی از چند پردازنده، تحمل خطا، تهیه نسخه پشتیبان، ابزارهای مدیریتی ساده و یکپارچه و قابلیت اطمینان و پایداری داشته باشد."
       },
 
-      // ================= سطح ۳: ریز (۱۲ سوال محاسباتی و دستوری) =================
+      // ================= سطح ۳: ریز (نکات دقیق) - ۱۵ سوال =================
       {
         level: 3,
-        q: "آدرس IPv4 از چند بیت تشکیل شده است؟",
+        q: "کاربرد پروتکل FTP چیست؟",
         options: [
-          "۳۲ بیت (۴ اکتت ۸ بیتی)",
-          "۶۴ بیت",
-          "۱۲۸ بیت",
-          "۱۶ بیت"
+          "انتقال پرونده بین دو رایانه",
+          "مدیریت از راه دور دسکتاپ",
+          "ارسال ایمیل",
+          "گزارش خطاهای شبکه"
         ],
         answer: 0,
-        exp: "هر آدرس شامل ۴ بخش است که هر بخش حداکثر ۲۵۵ (۲ به توان ۸) می‌تواند باشد."
+        exp: "پروتکل FTP (File Transfer Protocol) برای انتقال پرونده بین دو رایانه استفاده می‌شود. پورت‌های ۲۰ و ۲۱ مخصوص آن است."
       },
       {
         level: 3,
-        q: "محدوده آدرس‌های کلاس C در اکتت اول کدام است؟",
+        q: "کاربرد پروتکل ICMP چیست؟",
         options: [
-          "۱۹۲ تا ۲۲۳",
-          "۱ تا ۱۲۶",
-          "۱۲۸ تا ۱۹۱",
-          "۲۲۴ تا ۲۳۹"
+          "گزارش خطا و بررسی وضعیت ارتباط و سلامت شبکه",
+          "انتقال پرونده",
+          "مدیریت از راه دور",
+          "ارسال ایمیل"
         ],
         answer: 0,
-        exp: "کلاس C برای شبکه‌های کوچک با تعداد میزبان کم استفاده می‌شود."
+        exp: "پروتکل ICMP (Internet Control Message Protocol) برای بررسی وضعیت ارتباط و تشخیص خطا در شبکه استفاده می‌شود. در صورت بروز خطا می‌توان نوع خطا و منبع ایجاد آن را با استفاده از این پروتکل گزارش داد."
       },
       {
         level: 3,
-        q: "آدرس 127.0.0.1 برای چه منظوری رزرو شده است؟",
+        q: "تفاوت اصلی پروتکل TCP و UDP چیست؟",
         options: [
-          "تست کارت شبکه و پشته TCP/IP داخلی (Loopback)",
-          "آدرس پیش‌فرض مودم‌های خانگی",
-          "آدرس سرور مرکزی گوگل در اینترنت",
-          "آدرس مخصوص برای آپدیت خودکار ویندوز"
+          "TCP اتصال‌گرا و مطمئن است؛ UDP غیراتصال‌گرا، سریع و بدون تضمین",
+          "UDP تضمین ۱۰۰٪ برای رسیدن داده‌ها دارد",
+          "TCP فقط برای پخش زنده استفاده می‌شود",
+          "UDP داده‌ها را رمزنگاری می‌کند ولی TCP نه"
         ],
         answer: 0,
-        exp: "به این آدرس localhost نیز گفته می‌شود."
+        exp: "TCP اتصال‌گرا است و قبل از ارسال داده ارتباط برقرار می‌کند و سلامت داده را تضمین می‌کند ولی تأخیر دارد. UDP غیراتصال‌گرا است و بدون هماهنگی اولیه داده را ارسال می‌کند، سریع است ولی تضمینی برای رسیدن داده‌ها ندارد."
       },
       {
         level: 3,
-        q: "اگر سیستم نتواند از DHCP آدرس بگیرد، چه آدرسی (APIPA) به خود می‌گیرد؟",
+        q: "ترتیب صحیح دست‌تکانی سه‌مرحله‌ای TCP کدام است؟",
         options: [
-          "169.254.x.x",
-          "192.168.1.x",
-          "10.0.0.x",
-          "172.16.x.x"
+          "SYN ← SYN/ACK ← ACK",
+          "ACK ← SYN ← SYN/ACK",
+          "SYN/ACK ← SYN ← ACK",
+          "SYN ← ACK ← SYN/ACK"
         ],
         answer: 0,
-        exp: "Automatic Private IP Addressing به سیستم اجازه ارتباط محدود در شبکه محلی را می‌دهد."
+        exp: "در روش دست‌تکانی سه‌مرحله‌ای، ابتدا فرستنده بسته SYN را ارسال می‌کند و تقاضای برقراری ارتباط دارد. رایانه گیرنده در پاسخ بسته SYN/ACK را ارسال می‌کند. سپس فرستنده بسته ACK را برای تأیید ارسال می‌کند."
       },
       {
         level: 3,
-        q: "محدوده پورت‌های رزرو شده (Well-known Ports) کدام است؟",
+        q: "درگاه (Port) در شبکه چیست و محدوده آن چقدر است؟",
+        options: [
+          "ارتباطات مجازی برای تفکیک سرویس‌ها، عددی بین ۰ تا ۶۵۵۳۵",
+          "نوعی کابل، عددی بین ۱ تا ۱۰۰",
+          "آدرس فیزیکی کارت شبکه، بین ۰ تا ۲۵۵",
+          "نام سرور، متنی است"
+        ],
+        answer: 0,
+        exp: "درگاه (Port) برای تفکیک سرویس‌ها از یکدیگر با استفاده از ارتباطات مجازی استفاده می‌شود. شماره درگاه‌ها عددی بین ۰ تا ۶۵۵۳۵ است."
+      },
+      {
+        level: 3,
+        q: "محدوده درگاه‌های (Port) رزرو شده برای کاربردهای سیستم‌عامل استاندارد چقدر است؟",
         options: [
           "۰ تا ۱۰۲۳",
-          "۱۰۲۴ تا ۴۹۱۵۱",
+          "۱۰۲۴ تا ۶۵۵۳۵",
           "۰ تا ۶۵۵۳۵",
-          "۱ تا ۱۰۰"
+          "۸۰ تا ۴۴۳"
         ],
         answer: 0,
-        exp: "این پورت‌ها توسط سازمان IANA برای سرویس‌های استاندارد اختصاص یافته‌اند."
+        exp: "درگاه‌های ۰ تا ۱۰۲۳ برای کاربردهای سیستم‌عامل استاندارد رزرو شده‌اند و بقیه درگاه‌ها آزاد هستند."
       },
       {
         level: 3,
-        q: "پورت‌های ۲۰ و ۲۱ به ترتیب برای چه کاری در پروتکل FTP استفاده می‌شوند؟",
+        q: "پورت FTP (داده و فرمان) و SSH به ترتیب کدام‌اند؟",
         options: [
-          "۲۰ برای انتقال داده و ۲۱ برای ارسال فرمان (Control)",
-          "۲۱ برای داده و ۲۰ برای فرمان",
-          "هر دو برای انتقال فایل به صورت هم‌زمان",
-          "۲۰ برای آپلود و ۲۱ برای دانلود"
+          "FTP داده: ۲۰، FTP فرمان: ۲۱، SSH: ۲۲",
+          "FTP داده: ۸۰، FTP فرمان: ۲۱، SSH: ۲۳",
+          "FTP داده: ۲۱، FTP فرمان: ۲۲، SSH: ۲۳",
+          "FTP داده: ۲۵، FTP فرمان: ۸۰، SSH: ۴۴۳"
         ],
         answer: 0,
-        exp: "FTP از دو کانال مجزا برای مدیریت و انتقال استفاده می‌کند."
+        exp: "در جدول درگاه‌های استاندارد کتاب: FTP/data پورت ۲۰، FTP/control پورت ۲۱ و SSH پورت ۲۲ است."
       },
       {
         level: 3,
-        q: "دستور ipconfig در سیستم‌عامل ویندوز چه کاربردی دارد؟",
+        q: "پورت Telnet، HTTP و RDP به ترتیب کدام‌اند؟",
         options: [
-          "نمایش تنظیمات کارت شبکه (IP, Subnet, Gateway)",
-          "تست سرعت دانلود و آپلود اینترنت",
-          "تغییر نام کاربری و رمز عبور ویندوز",
-          "پاک کردن فایل‌های اضافی از روی هارد"
+          "Telnet: ۲۳، HTTP: ۸۰، RDP: ۳۳۸۹",
+          "Telnet: ۲۲، HTTP: ۸۰۸۰، RDP: ۲۱",
+          "Telnet: ۸۰، HTTP: ۴۴۳، RDP: ۲۲",
+          "Telnet: ۲۱، HTTP: ۲۳، RDP: ۸۰"
         ],
         answer: 0,
-        exp: "با سوئیچ /all اطلاعات دقیق‌تری مثل MAC آدرس هم نمایش داده می‌شود."
+        exp: "طبق جدول کتاب: Telnet پورت ۲۳، HTTP پورت ۸۰ و RDP پورت ۳۳۸۹ (TCP/UDP) است."
       },
       {
         level: 3,
-        q: "برای ردیابی مسیر عبور بسته‌ها تا مقصد و مشاهده روترهای میانی از چه دستوری استفاده می‌شود؟",
+        q: "در همبندی حلقوی (Ring) از چه سخت‌افزاری برای ایجاد ساختار حلقه استفاده می‌شود؟",
         options: [
-          "tracert",
-          "ping",
-          "nslookup",
-          "netstat"
+          "MAU (Multistation Access Unit)",
+          "سوئیچ (Switch)",
+          "روتر (Router)",
+          "ترمیناتور (Terminator)"
         ],
         answer: 0,
-        exp: "Traceroute (tracert) زمان پاسخگویی هر گام (Hop) را نشان می‌دهد."
+        exp: "در همبندی حلقوی برای ایجاد ساختار منطقی حلقه از سخت‌افزاری به نام MAU (Multistation Access Unit) استفاده می‌شود."
       },
       {
         level: 3,
-        q: "الگوریتم CSMA/CD در کدام لایه و برای چه هدفی استفاده می‌شود؟",
+        q: "در همبندی ستاره‌ای (Star) از چه سخت‌افزاری و چه نوع کابلی استفاده می‌شود؟",
         options: [
-          "لایه ۲ - تشخیص تصادف داده‌ها در شبکه‌های کابلی",
-          "لایه ۳ - مسیریابی در اینترنت",
-          "لایه ۴ - رمزنگاری بسته‌های ارسالی",
-          "لایه ۱ - تقویت سیگنال‌های ضعیف"
+          "سوئیچ (Switch) و کابل TP با حداکثر فاصله ۹۰ متر",
+          "MAU و کابل کواکسیال",
+          "روتر و فیبر نوری",
+          "ترمیناتور و کابل مسی"
         ],
         answer: 0,
-        exp: "Carrier Sense Multiple Access with Collision Detection در اترنت استفاده می‌شد."
+        exp: "در همبندی ستاره‌ای از سوئیچ (Switch) استفاده می‌شود و هر رایانه با یک کابل مجزا به سوئیچ متصل می‌شود. نوع کابل استفاده شده TP است و معمولاً حداکثر فاصله یک رایانه تا سوئیچ ۹۰ متر است."
       },
       {
         level: 3,
-        q: "پورت ۳۳۸۹ مربوط به کدام سرویس ویندوزی است؟",
+        q: "پایدارترین و گران‌ترین نوع همبندی کدام است؟",
         options: [
-          "Remote Desktop (RDP)",
-          "SQL Server",
-          "VPN Connection",
-          "File Sharing (SMB)"
+          "مش (Mesh)",
+          "خطی (Bus)",
+          "ستاره‌ای (Star)",
+          "حلقوی (Ring)"
         ],
         answer: 0,
-        exp: "این پورت برای کنترل از راه دور دسکتاپ ویندوز استفاده می‌شود."
+        exp: "همبندی مش (Mesh) مطمئن‌ترین و پایدارترین نوع ارتباط را دارد چون بیش از یک مسیر بین گره‌ها وجود دارد، ولی هزینه برپایی آن بالاست."
       },
       {
         level: 3,
-        q: "در استاندارد 802.11، تفاوت باندهای ۲.۴GHz و ۵GHz در چیست؟",
+        q: "استاندارد IEEE 802.3 به چه چیزی اشاره دارد؟",
         options: [
-          "۲.۴ برد بیشتر و نفوذ بهتر؛ ۵ سرعت بالاتر و تداخل کمتر",
-          "۵ گیگاهرتز برد بسیار بیشتری نسبت به ۲.۴ دارد",
-          "۲.۴ گیگاهرتز فقط برای فواصل زیر ۱ متر است",
-          "هیچ تفاوتی در سرعت و برد ندارند"
+          "اترنت (Ethernet) و انتقال داده در شبکه با پروتکل دسترسی به کانال",
+          "شبکه محلی بی‌سیم (Wi-Fi)",
+          "وایمکس (WiMAX)",
+          "بلوتوث"
         ],
         answer: 0,
-        exp: "باند ۵ گیگاهرتز کانال‌های بیشتری دارد و خلوت‌تر است."
+        exp: "استاندارد IEEE 802.3 استاندارد اترنت (Ethernet) است که در سال ۱۹۸۳ ارائه شد و با استفاده از پروتکل دسترسی به کانال، سرعت انتقال داده را افزایش می‌دهد."
       },
       {
         level: 3,
-        q: "کدام دستور برای مشاهده آدرس فیزیکی (MAC) کارت شبکه استفاده می‌شود؟",
+        q: "استاندارد IEEE 802.11 به چه چیزی اشاره دارد؟",
         options: [
-          "getmac",
-          "ping -a",
-          "hostname",
-          "tasklist"
+          "شبکه محلی بی‌سیم (WLAN / Wi-Fi)",
+          "اترنت کابلی",
+          "وایمکس",
+          "شبکه سیار باند پهن"
         ],
         answer: 0,
-        exp: "دستور getmac لیست تمام آدرس‌های فیزیکی کارت‌های شبکه را می‌دهد."
+        exp: "مؤسسه IEEE در سال ۱۹۹۷ اولین استاندارد شبکه محلی بی‌سیم (WLAN) را تدوین کرد. این استاندارد بعدها با نام IEEE 802.11 و نسخه‌های a/b/g/n/ac توسعه یافت."
+      },
+      {
+        level: 3,
+        q: "استاندارد IEEE 802.16 (WiMAX) چه ویژگی دارد؟",
+        options: [
+          "حداکثر نرخ انتقال ۷۵ مگابیت بر ثانیه و برای دستگاه‌های سیار تا فاصله ۵۰ کیلومتر",
+          "فقط برای شبکه‌های کابلی",
+          "برای اتصال بلوتوث",
+          "برای پرداخت‌های NFC"
+        ],
+        answer: 0,
+        exp: "استاندارد IEEE 802.16 به نام WiMAX شناخته می‌شود. حداکثر نرخ انتقال در این استاندارد ۷۵ Mbps است و برای دستگاه‌های سیار تا فاصله ۵۰ کیلومتر کار می‌کند."
+      },
+      {
+        level: 3,
+        q: "استاندارد IEEE 802.20 (MBWA) چه هدفی دارد؟",
+        options: [
+          "پیاده‌سازی شبکه‌های سیار بی‌سیم با پهنای باند وسیع (Broadband) در سرتاسر جهان",
+          "استاندارد اترنت کابلی",
+          "استاندارد وای‌فای خانگی",
+          "استاندارد بلوتوث"
+        ],
+        answer: 0,
+        exp: "استاندارد IEEE 802.20 به نام MBWA (Mobile Broadband Wireless Access) شناخته می‌شود و می‌کوشد تا ضمن هماهنگی با دیگر استانداردهای خانواده ۸۰۲، پیاده‌سازی شبکه‌های سیار بی‌سیم با پهنای باند وسیع (Broadband) را در سرتاسر جهان آسان کند."
       }
     ];
 
@@ -918,24 +772,18 @@
     function startLevel(lvl) {
       currentLevel = lvl;
       const filtered = questions.filter(q => q.level === lvl);
-      
-      // کپی عمیق و شافل سوالات
       levelQuestions = shuffle(filtered.map(q => ({
         ...q,
         options: [...q.options]
       })));
-
-      // شافل گزینه‌ها برای هر سوال و اصلاح ایندکس پاسخ صحیح
       levelQuestions.forEach(q => {
         const correctText = q.options[q.answer];
         shuffle(q.options);
         q.answer = q.options.indexOf(correctText);
       });
-
       currentQ = 0;
       score = 0;
       answered = false;
-
       document.getElementById('level-selector').classList.add('hidden');
       document.getElementById('quiz-result').classList.add('hidden');
       document.getElementById('quiz-game').classList.remove('hidden');
@@ -945,17 +793,14 @@
     function renderQuestion() {
       answered = false;
       const q = levelQuestions[currentQ];
-
       document.getElementById('question-counter').innerText =
         `سوال ${currentQ + 1} از ${levelQuestions.length} | سطح ${currentLevel} (${levelNames[currentLevel]})`;
       document.getElementById('score-counter').innerText = `امتیاز: ${score}`;
       document.getElementById('quiz-progress-fill').style.width =
         `${(currentQ / levelQuestions.length) * 100}%`;
-
       document.getElementById('question-text').innerText = q.q;
       const grid = document.getElementById('options-grid');
       grid.innerHTML = '';
-
       q.options.forEach((opt, idx) => {
         const btn = document.createElement('button');
         btn.className = 'opt-btn';
@@ -963,7 +808,6 @@
         btn.onclick = () => selectOption(idx);
         grid.appendChild(btn);
       });
-
       document.getElementById('explanation-box').classList.add('hidden');
       document.getElementById('next-btn').classList.add('hidden');
     }
@@ -973,7 +817,6 @@
       answered = true;
       const q = levelQuestions[currentQ];
       const buttons = document.querySelectorAll('#options-grid .opt-btn');
-
       if (index === q.answer) {
         score++;
         buttons[index].classList.add('correct');
@@ -981,13 +824,10 @@
         buttons[index].classList.add('wrong');
         buttons[q.answer].classList.add('correct');
       }
-
       document.getElementById('score-counter').innerText = `امتیاز: ${score}`;
-
       const expBox = document.getElementById('explanation-box');
       expBox.innerHTML = `<strong>💡 تشریح پاسخ:</strong><br>${q.exp}`;
       expBox.classList.remove('hidden');
-
       const nextBtn = document.getElementById('next-btn');
       nextBtn.innerText = currentQ === levelQuestions.length - 1
         ? 'مشاهده نتیجه این سطح 🏁'
@@ -1006,17 +846,13 @@
 
     function showResults() {
       document.getElementById('quiz-game').classList.add('hidden');
-      const res = document.getElementById('quiz-result');
-      res.classList.remove('hidden');
-
+      document.getElementById('quiz-result').classList.remove('hidden');
       const pct = Math.round((score / levelQuestions.length) * 100);
       document.getElementById('score-circle').style.setProperty('--pct', pct);
       document.getElementById('final-pct').innerText = `${pct}٪`;
       document.getElementById('final-score-text').innerText = `${score} از ${levelQuestions.length}`;
-
       levels[currentLevel].score = score;
       levels[currentLevel].total = levelQuestions.length;
-
       let msg = '';
       if (pct >= PASS_PERCENT) {
         levels[currentLevel].completed = true;
@@ -1040,7 +876,6 @@
       renderLevelButtons();
     }
 
-    // init
     loadProgress();
     renderLevelButtons();
   </script>
