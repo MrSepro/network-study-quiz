@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>یادگیری سریع و آزمون پودمان ۱ شبکه</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --card-sub: #334155;
+      --accent: #38bdf8;
+      --accent-hover: #0284c7;
+      --success: #22c55e;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --border: #475569;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Vazirmatn', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 70px;
+    }
+    header {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    .brand h1 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand p {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .nav-tabs {
+      display: flex;
+      background: var(--card-sub);
+      border-radius: 12px;
+      padding: 4px;
+      gap: 4px;
+    }
+    .tab-btn {
+      background: none;
+      border: none;
+      color: var(--text-muted);
+      padding: 8px 16px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .tab-btn.active {
+      background: var(--accent);
+      color: #0f172a;
+      box-shadow: 0 2px 8px rgba(56, 189, 248, 0.4);
+    }
+    main {
+      flex: 1;
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 16px;
+    }
+    .hidden {
+      display: none !important;
+    }
+
+    /* STUDY SECTION */
+    .study-card {
+      background: var(--card-bg);
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 16px;
+      border: 1px solid var(--border);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .study-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .point-item {
+      background: rgba(255,255,255,0.03);
+      border-radius: 10px;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-right: 4px solid var(--accent);
+      font-size: 0.92rem;
+      line-height: 1.7;
+    }
+    .point-item strong {
+      color: #38bdf8;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 0.75rem;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--accent);
+      font-weight: 700;
+      margin-left: 6px;
+    }
+    .table-container {
+      overflow-x: auto;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: right;
+      font-size: 0.85rem;
+    }
+    th, td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    th {
+      background: var(--card-sub);
+      color: var(--accent);
+    }
+
+    /* QUIZ SECTION */
+    .quiz-progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--card-sub);
+      border-radius: 4px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+    .quiz-progress-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), #60a5fa);
+      transition: width 0.3s ease;
+    }
+    .quiz-status {
+      display: flex;
+      justify-content: space-between;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    .quiz-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 22px;
+      border: 1px solid var(--border);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+    }
+    .question-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .opt-btn {
+      background: var(--card-sub);
+      color: var(--text);
+      border: 2px solid transparent;
+      padding: 14px 16px;
+      border-radius: 12px;
+      text-align: right;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s ease;
+    }
+    .opt-btn:active {
+      transform: scale(0.98);
+    }
+    .opt-num {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      flex-shrink: 0;
+    }
+    .opt-btn.correct {
+      background: rgba(34, 197, 94, 0.2);
+      border-color: var(--success);
+      color: #86efac;
+    }
+    .opt-btn.correct .opt-num {
+      background: var(--success);
+      color: #0f172a;
+    }
+    .opt-btn.wrong {
+      background: rgba(239, 68, 68, 0.2);
+      border-color: var(--danger);
+      color: #fca5a5;
+    }
+    .opt-btn.wrong .opt-num {
+      background: var(--danger);
+      color: white;
+    }
+    .explanation-box {
+      margin-top: 18px;
+      padding: 14px;
+      border-radius: 12px;
+      background: rgba(56, 189, 248, 0.1);
+      border-right: 4px solid var(--accent);
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+    .action-btn {
+      margin-top: 18px;
+      width: 100%;
+      background: var(--accent);
+      color: #0f172a;
+      border: none;
+      padding: 14px;
+      font-size: 1rem;
+      font-weight: 800;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
+    }
+    .result-card {
+      text-align: center;
+      background: var(--card-bg);
+      padding: 30px 20px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+    }
+    .score-circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: conic-gradient(var(--accent) calc(var(--pct) * 1%), var(--card-sub) 0);
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .score-inner {
+      width: 100px;
+      height: 100px;
+      background: var(--card-bg);
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 900;
+      color: var(--accent);
+    }
+    .score-inner span {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <h1>🚀 پودمان ۱: شبکه</h1>
+      <p>خلاصه امتحانی و آزمون سریع تستی</p>
+    </div>
+    <div class="nav-tabs">
+      <button class="tab-btn active" onclick="switchTab('study')">📖 مطالعه</button>
+      <button class="tab-btn" onclick="switchTab('quiz')">✍️ آزمون</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- TAB 1: STUDY -->
+    <div id="study-tab">
+      
+      <div class="study-card">
+        <div class="study-title">⚡ کپسول طلایی امتحانی (نکات قطعی)</div>
+        <div class="point-item">
+          <strong>۱. دست‌تکانی ۳ مرحله‌ای TCP:</strong> ابتدا فرستنده <code>SYN</code> می‌فرستد $\leftarrow$ گیرنده با <code>SYN/ACK</code> پاسخ می‌دهد $\leftarrow$ فرستنده <code>ACK</code> فرستاده و ارتباط برقرار می‌شود.
+        </div>
+        <div class="point-item">
+          <strong>۲. تفاوت TCP و UDP:</strong> پروتکل TCP اتصال‌گرا، با اطمینان کامل و با بررسی خطاست (کندتر). پروتکل UDP بدون اتصال، بدون تضمین و بسیار پرسرعت است (مخصوص فیلم زنده و صوت).
+        </div>
+        <div class="point-item">
+          <strong>۳. پورت‌های مهم کتاب:</strong>
+          <span class="badge">FTP داده: 20</span>
+          <span class="badge">FTP فرمان: 21</span>
+          <span class="badge">SSH: 22</span>
+          <span class="badge">Telnet: 23</span>
+          <span class="badge">HTTP: 80</span>
+          <span class="badge">RDP: 3389</span>
+        </div>
+        <div class="point-item">
+          <strong>۴. لایه‌های کابل کواکسیال (۴ لایه):</strong> مغزی مسی $\leftarrow$ عایق داخلی $\leftarrow$ شیلد توری محافظ $\leftarrow$ روکش بیرونی.
+        </div>
+        <div class="point-item">
+          <strong>۵. لایه‌های فیبر نوری (۵ لایه):</strong> هسته $\leftarrow$ روکش (Cladding) $\leftarrow$ غلاف $\leftarrow$ الیاف تقویتی $\leftarrow$ روکش بیرونی. مبنای کار: شکست نور، سرعت ۱۰ گیگابیت بر ثانیه.
+        </div>
+        <div class="point-item">
+          <strong>۶. استانداردهای IEEE:</strong>
+          <span class="badge">802.3 اترنت کابلی</span>
+          <span class="badge">802.11 وای‌فای بی‌سیم</span>
+          <span class="badge">802.16 وایمکس (تا ۵۰km)</span>
+          <span class="badge">802.20 باند پهن متحرک MBWA</span>
+        </div>
+      </div>
+
+      <div class="study-card">
+        <div class="study-title">📐 مقایسه توپولوژی‌ها (نحوه چینش کابل‌ها)</div>
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>توپولوژی</th>
+                <th>ویژگی اصلی</th>
+                <th>مزیت</th>
+                <th>عیب بزرگ</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>خطی (Bus)</strong></td>
+                <td>یک کابل سراسری مشترک</td>
+                <td>ارزان، مصرف کابل کم</td>
+                <td>قطع کابل = قطعی کل شبکه</td>
+              </tr>
+              <tr>
+                <td><strong>حلقه‌ای (Ring)</strong></td>
+                <td>حلقه منطقی با قطعه <strong>MAU</strong></td>
+                <td>نظم در ارسال توکن</td>
+                <td>خرابی یک سیستم شبکه را مختل می‌کند</td>
+              </tr>
+              <tr>
+                <td><strong>ستاره‌ای (Star)</strong></td>
+                <td>اتصال همه به <strong>سوئیچ (Switch)</strong></td>
+                <td>عیب‌یابی بسیار ساده و محبوب‌ترین</td>
+                <td>خرابی سوئیچ کل شبکه را قطع می‌کند</td>
+              </tr>
+              <tr>
+                <td><strong>مش (Mesh)</strong></td>
+                <td>اتصال نقطه به نقطه هر سیستم به همه</td>
+                <td>بیشترین پایداری و امنیت ممکن</td>
+                <td>گران‌ترین و بالاترین مصرف کابل</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="study-card">
+        <div class="study-title">📡 فناوری‌های بی‌سیم و امواج</div>
+        <div class="point-item">
+          <strong>امواج رادیویی:</strong> فرکانس پایین‌تر، توانایی عبور عالی از دیوار و موانع ساختمانی، افت توان با فاصله.
+        </div>
+        <div class="point-item">
+          <strong>امواج مایکروویو:</strong> فرکانس بسیار بالا (بالای 100MHz)، حجم دیتای بالا، انتقال **دید مستقیم** (از مانع و دیوار عبور نمی‌کند).
+        </div>
+        <div class="point-item">
+          <strong>بلوتوث (Bluetooth):</strong> برد تا ۱۰۰ متر، فرکانس 2.4 تا 2.48 گیگاهرتز، هدف: حذف کابل لوازم جانبی.
+        </div>
+        <div class="point-item">
+          <strong>ان‌اف‌سی (NFC):</strong> برد فوق‌العاده کوتاه (حدود <strong>۴ سانتی‌متر</strong>)، کاربرد در پرداخت‌های بدون تماس، کارت مترو/اتوبوس و IoT.
+        </div>
+      </div>
+
+      <div class="study-card">
+        <div class="study-title">🛡️ مفاهیم تکمیلی و مهم</div>
+        <div class="point-item">
+          <strong>تحمل خطا (Fault Tolerance):</strong> توانایی سیستم‌عامل شبکه در ادامه کار بدون وقفه، با جایگزینی خودکار تجهیزات پشتیبان در کسری از ثانیه هنگام خرابی سخت‌افزار.
+        </div>
+        <div class="point-item">
+          <strong>انواع نویز:</strong>
+          <br>• <strong>هم‌شنوایی (Crosstalk):</strong> اثر میدان مغناطیسی کابل‌های مجاور یا برق فشار قوی روی هم.
+          <br>• <strong>حرارتی:</strong> حرکت تصادفی الکترون‌ها بر اثر حرارت.
+          <br>• <strong>القایی:</strong> ناشی از کارکرد موتورهای الکتریکی یا وسایل خانگی.
+        </div>
+      </div>
+
+    </div>
+
+    <!-- TAB 2: QUIZ -->
+    <div id="quiz-tab" class="hidden">
+      
+      <div id="quiz-game">
+        <div class="quiz-status">
+          <span id="question-counter">سوال ۱ از ۱۵</span>
+          <span id="score-counter">امتیاز: ۰</span>
+        </div>
+        <div class="quiz-progress-bar">
+          <div id="quiz-progress-fill" class="quiz-progress-fill"></div>
+        </div>
+
+        <div class="quiz-card">
+          <div id="question-text" class="question-text"></div>
+          <div id="options-grid" class="options-grid"></div>
+          <div id="explanation-box" class="explanation-box hidden"></div>
+          <button id="next-btn" class="action-btn hidden" onclick="nextQuestion()">سوال بعدی ⬅️</button>
+        </div>
+      </div>
+
+      <div id="quiz-result" class="result-card hidden">
+        <h2>🎉 نتیجه آزمون شما</h2>
+        <div class="score-circle" id="score-circle" style="--pct: 0">
+          <div class="score-inner">
+            <span id="final-pct">۰٪</span>
+            <span id="final-score-text">۰ از ۱۵</span>
+          </div>
+        </div>
+        <p id="result-message" style="margin-bottom: 20px; font-weight: 700; color: var(--accent);"></p>
+        <button class="action-btn" onclick="restartQuiz()">🔄 آزمون مجدد</button>
+      </div>
+
+    </div>
+  </main>
+
+  <script>
+    const questions = [
+      {
+        q: "فرآیند برقراری ارتباط در پروتکل TCP به چه روشی مشهور است و ترتیب ارسال بسته‌ها چگونه است؟",
+        options: [
+          "دست‌تکانی دو مرحله‌ای (SYN - ACK)",
+          "دست‌تکانی سه مرحله‌ای (SYN سپس SYN/ACK سپس ACK)",
+          "ارسال مستقیم داده نود به نود (Datagram)",
+          "دست‌تکانی چهار مرحله‌ای (CONNECT - WAIT - ACCEPT - START)"
+        ],
+        answer: 1,
+        exp: "پروتکل TCP اتصال‌گراست و از روش معروف دست‌تکانی ۳ مرحله‌ای (SYN فرستنده، SYN/ACK گیرنده، و ACK فرستنده) برای برقراری ارتباط پایدار استفاده می‌کند."
+      },
+      {
+        q: "کدام توپولوژی در صورت بروز اشکال یا قطعی در یک کابل، ارتباط کل شبکه را قطع می‌کند؟",
+        options: [
+          "توپولوژی ستاره‌ای (Star)",
+          "توپولوژی مش (Mesh)",
+          "توپولوژی خطی (Bus)",
+          "توپولوژی درختی (Tree)"
+        ],
+        answer: 2,
+        exp: "در توپولوژی خطی (Bus) تمام کامپیوترها به یک کابل اصلی متصل هستند؛ در نتیجه قطع شدن کابل در هر نقطه‌ای باعث قطعی کل ارتباطات شبکه خواهد شد."
+      },
+      {
+        q: "برای انتقال صوت و تصویر زنده (Streaming) کدام پروتکل به دلیل سرعت بالا و سربار کم پیشنهاد می‌شود؟",
+        options: [
+          "TCP",
+          "FTP",
+          "UDP",
+          "ICMP"
+        ],
+        answer: 2,
+        exp: "پروتکل UDP اتصال‌گرا نیست و بسته‌ها را بدون تاییدیه و با حداکثر سرعت ارسال می‌کند، بنابراین در کاربردهای بلادرنگ نظیر صوت و تصویر ارجحیت دارد."
+      },
+      {
+        q: "شماره پورت استاندارد برای پروتکل انتقال ایمن و مدیریت از راه دور سرور (SSH) کدام است؟",
+        options: [
+          "پورت ۲۰",
+          "پورت ۲۱",
+          "پورت ۲۲",
+          "پورت ۸۰"
+        ],
+        answer: 2,
+        exp: "پورت ۲۲ برای SSH رزرو شده است. پورت‌های ۲۰ و ۲۱ برای FTP و ۸۰ برای HTTP هستند."
+      },
+      {
+        q: "کدام لایه از کابل کواکسیال نقش محافظت از سیگنال‌ها در برابر نویزهای خارجی را بر عهده دارد؟",
+        options: [
+          "مغزی مسی",
+          "عایق داخلی",
+          "شیلد یا محافظ توری سیمی",
+          "روکش پلاستیکی خارجی"
+        ],
+        answer: 2,
+        exp: "شیلد (سیم‌بافت توری) از سیگنال‌های عبوری مغزی کابل در برابر تداخل الکترومغناطیسی و نویز محافظت می‌کند."
+      },
+      {
+        q: "فاصله کاری موثر فناوری ارتباطی NFC تقریباً چقدر است؟",
+        options: [
+          "حدود ۴ سانتی‌متر",
+          "تا ۱۰ متر",
+          "تا ۱۰۰ متر",
+          "تا ۵۰۰ متر"
+        ],
+        answer: 0,
+        exp: "فناوری NFC (ارتباط میدان نزدیک) برای فواصل بسیار کوتاه یعنی حدود ۴ سانتی‌متر و کمتر طراحی شده تا امنیت پرداخت حفظ شود."
+      },
+      {
+        q: "کدام استاندارد IEEE معرف شبکه محلی بی‌سیم (WLAN یا Wi-Fi) است؟",
+        options: [
+          "IEEE 802.3",
+          "IEEE 802.11",
+          "IEEE 802.16",
+          "IEEE 802.20"
+        ],
+        answer: 1,
+        exp: "استاندارد 802.11 برای وای‌فای (WLAN)، 802.3 برای اترنت، و 802.16 برای وایمکس است."
+      },
+      {
+        q: "در توپولوژی حلقه‌ای، برای ایجاد ساختار منطقی حلقه از کدام سخت‌افزار استفاده می‌شود؟",
+        options: [
+          "سوئیچ (Switch)",
+          "مودم (Modem)",
+          "قطعه MAU",
+          "مسیریاب (Router)"
+        ],
+        answer: 2,
+        exp: "در توپولوژی Ring از سخت‌افزاری به نام MAU (Multistation Access Unit) برای اتصال کابل‌ها به شکل حلقه منطقی استفاده می‌شود."
+      },
+      {
+        q: "ویژگی امواج مایکروویو در مقایسه با امواج رادیویی چیست؟",
+        options: [
+          "فرکانس پایین‌تر و عبور بهتر از موانع بتنی",
+          "فرکانس بالا و نیاز اجباری به دید مستقیم (عدم عبور خوب از موانع)",
+          "عدم کاربرد در خطوط تلفن همراه",
+          "نیاز به کابل مسی در طول مسیر"
+        ],
+        answer: 1,
+        exp: "امواج مایکروویو فرکانس بسیار بالایی دارند (بیش از 100MHz) و به صورت خط مستقیم حرکت می‌کنند، بنابراین نباید مانعی بین فرستنده و گیرنده باشد."
+      },
+      {
+        q: "نویز ناشی از اثر میدان الکترومغناطیسی یک کابل روی کابل مجاور چه نام دارد؟",
+        options: [
+          "نویز حرارتی",
+          "نویز القایی",
+          "نویز هم‌شنوایی (Crosstalk)",
+          "نویز شکست نور"
+        ],
+        answer: 2,
+        exp: "هم‌شنوایی (Crosstalk) زمانی رخ می‌دهد که میدان الکترومغناطیسی یک کابل یا کابل‌های فشار قوی مجاور روی کابل کناری اثر مخرب بگذارد."
+      },
+      {
+        q: "قابلیت «تحمل خطا» (Fault Tolerance) در سیستم‌عامل شبکه به چه معناست؟",
+        options: [
+          "افزایش سرعت کابل‌های شبکه با نرم‌افزار",
+          "تداوم کارکرد سرویس‌ها بدون وقفه با جایگزینی خودکار سخت‌افزار پشتیبان هنگام خطا",
+          "جلوگیری از تغییر پسورد کاربران",
+          "رمزنگاری کدهای وب"
+        ],
+        answer: 1,
+        exp: "تحمل خطا باعث می‌شود هنگام خرابی تجهیزات، بدون دخالت انسان و در زمان بسیار کوتاه تجهیزات جایگزین وارد مدار شده و سرویس‌دهی حفظ شود."
+      },
+      {
+        q: "کدام توپولوژی دارای بیشترین پایداری، اطمینان و خطوط اتصال متعدد است اما هزینه اجرای آن بسیار بالاست؟",
+        options: [
+          "توپولوژی ستاره‌ای",
+          "توپولوژی خطی",
+          "توپولوژی مش (Mesh)",
+          "توپولوژی حلقه‌ای"
+        ],
+        answer: 2,
+        exp: "توپولوژی مش تمام سیستم‌ها را دو به دو به هم متصل می‌کند و چندین مسیر پشتیبان دارد؛ از این رو پایدارترین ولی گران‌ترین توپولوژی است."
+      },
+      {
+        q: "پروتکل ICMP در شبکه عمدتاً برای چه هدفی استفاده می‌شود؟",
+        options: [
+          "انتقال پرونده و فایل",
+          "گزارش خطا و بررسی وضعیت ارتباط و سلامت شبکه",
+          "مدیریت گرافیکی دسکتاپ ویندوز",
+          "تخصیص اتوماتیک نام کامپیوتر"
+        ],
+        answer: 1,
+        exp: "پروتکل ICMP (مانند دستور Ping) برای تشخیص خطا، بررسی باز بودن مسیر و گزارش وضعیت خطاهای شبکه به کار می‌رود."
+      },
+      {
+        q: "شماره پورت پروتکل ارتباط از راه دور دسکتاپ (RDP) در ویندوز چند است؟",
+        options: [
+          "پورت ۸۰",
+          "پورت ۳۳۸۹",
+          "پورت ۴۴۳",
+          "پورت ۲۱"
+        ],
+        answer: 1,
+        exp: "پورت پیش‌فرض سرویس Remote Desktop Protocol (RDP) شماره ۳۳۸۹ است."
+      },
+      {
+        q: "شبکه محلی کامپیوترهای یک هنرستان یا اتاق‌های مجاور تحت کدام عنوان دسته‌بندی می‌شود؟",
+        options: [
+          "WAN",
+          "LAN",
+          "MAN",
+          "GAN"
+        ],
+        answer: 1,
+        exp: "شبکه LAN (Local Area Network) شامل کامپیوترهایی است که در فاصله نزدیک به هم (یک اتاق، طبقه، کارگاه هنرستان یا ساختمان) قرار دارند."
+      }
+    ];
+
+    let currentQ = 0;
+    let score = 0;
+    let answered = false;
+
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      if (tab === 'study') {
+        document.querySelectorAll('.tab-btn')[0].classList.add('active');
+        document.getElementById('study-tab').classList.remove('hidden');
+        document.getElementById('quiz-tab').classList.add('hidden');
+      } else {
+        document.querySelectorAll('.tab-btn')[1].classList.add('active');
+        document.getElementById('study-tab').classList.add('hidden');
+        document.getElementById('quiz-tab').classList.remove('hidden');
+        if (currentQ === 0 && !answered) renderQuestion();
+      }
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderQuestion() {
+      answered = false;
+      const q = questions[currentQ];
+      document.getElementById('question-counter').innerText = `سوال ${currentQ + 1} از ${questions.length}`;
+      document.getElementById('score-counter').innerText = `امتیاز: ${score}`;
+      document.getElementById('quiz-progress-fill').style.width = `${((currentQ) / questions.length) * 100}%`;
+      
+      document.getElementById('question-text').innerText = q.q;
+      const grid = document.getElementById('options-grid');
+      grid.innerHTML = '';
+      
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'opt-btn';
+        btn.innerHTML = `<span class="opt-num">${idx + 1}</span><span>${opt}</span>`;
+        btn.onclick = () => selectOption(idx);
+        grid.appendChild(btn);
+      });
+
+      document.getElementById('explanation-box').classList.add('hidden');
+      document.getElementById('next-btn').classList.add('hidden');
+    }
+
+    function selectOption(index) {
+      if (answered) return;
+      answered = true;
+      const q = questions[currentQ];
+      const buttons = document.querySelectorAll('.opt-btn');
+
+      if (index === q.answer) {
+        score++;
+        buttons[index].classList.add('correct');
+      } else {
+        buttons[index].classList.add('wrong');
+        buttons[q.answer].classList.add('correct');
+      }
+
+      document.getElementById('score-counter').innerText = `امتیاز: ${score}`;
+      
+      const expBox = document.getElementById('explanation-box');
+      expBox.innerHTML = `<strong>💡 تشریح پاسخ:</strong><br>${q.exp}`;
+      expBox.classList.remove('hidden');
+
+      const nextBtn = document.getElementById('next-btn');
+      if (currentQ === questions.length - 1) {
+        nextBtn.innerText = 'مشاهده کارنامه پایانی 🏁';
+      } else {
+        nextBtn.innerText = 'سوال بعدی ⬅️';
+      }
+      nextBtn.classList.remove('hidden');
+    }
+
+    function nextQuestion() {
+      if (currentQ < questions.length - 1) {
+        currentQ++;
+        renderQuestion();
+      } else {
+        showResults();
+      }
+    }
+
+    function showResults() {
+      document.getElementById('quiz-game').classList.add('hidden');
+      const res = document.getElementById('quiz-result');
+      res.classList.remove('hidden');
+
+      const pct = Math.round((score / questions.length) * 100);
+      document.getElementById('score-circle').style.setProperty('--pct', pct);
+      document.getElementById('final-pct').innerText = `${pct}٪`;
+      document.getElementById('final-score-text').innerText = `${score} از ${questions.length}`;
+
+      const msg = document.getElementById('result-message');
+      if (pct >= 85) {
+        msg.innerText = 'عالی و فوق‌العاده! برای نمره ۲۰ امتحان کاملاً آماده‌ای 🏆';
+      } else if (pct >= 60) {
+        msg.innerText = 'خوب بود! با یک بار مرور تب مطالعه حتماً به ۲۰ می‌رسی 👍';
+      } else {
+        msg.innerText = 'نیاز به مرور داری؛ نکات کپسولی تب مطالعه رو یکبار با دقت بخون و دوباره تست بزن 🎯';
+      }
+    }
+
+    function restartQuiz() {
+      currentQ = 0;
+      score = 0;
+      answered = false;
+      document.getElementById('quiz-result').classList.add('hidden');
+      document.getElementById('quiz-game').classList.remove('hidden');
+      renderQuestion();
+    }
+  </script>
+</body>
+</html>
